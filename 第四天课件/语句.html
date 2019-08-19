@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 900px;
+        height: 200px;
+        margin: auto;
+        background: pink;
+    }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">换肤</button>
+</body>
+</html>
+<script>
+/*
+if else
+? : 三元运算是有返回值的
+switch(值){
+    case值1
+}  绝对比较是用的 === ；break
+||或 &&且
+*/
+var a =1?'haha':'hehe' //先把用Boolean转成数字 得到的是true 所以执行问号后边的代码
+console.log(a)
+
+// var n =100||200
+// console.log(n)
+// var n2 =0||6
+// console.log(n2)
+// var n3 =0||NaN
+// console.log(n3)
+//前边成立执行前边的结果 前边不成立执行后边的结果
+var n =100&&200
+console.log(n)
+var n2 =0&&6
+console.log(n2)
+var n3 =0&&NaN
+console.log(n3)
+var n4 =100&&0
+console.log(n4)
+//前边成立执行后边的结果  前边不成立执行前边的结果
+</script>
+<script>
+    var flag =true;
+btn.onclick =function(){
+    flag =!flag//重新给flag赋值 赋予的是改变之前flag的反义词
+    box.style.background =flag ? 'pink':'skyblue'
+}
+</script>

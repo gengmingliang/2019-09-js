@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var obj ={
+        f:function(){
+            console.log(666)
+        }
+    }
+    obj.f()
+    var obj2 =obj
+    obj2.f =function(){
+        console.log(777)
+    }
+    obj.f()
+
+    obj2 ={
+        f:function(){
+            console.log(888)
+        }
+    }
+    obj.f()//777
+
+    var arr =[]//字面量的创建方式
+    Number([])//0 [].tostring()
+    Number([1,2])// NaN
+
+    //数组的增删改查
+    //push 输出的是改变后的数组的长度
+    var ary =[1,2,3]
+    ary.push([4])
+    console.log(ary[3])
+    //通过length添加 ary[ary.length]=666
+    function mypush(){
+        var arr =arguments[0]
+        for(var i =1;i<arguments.length;i++){
+            //从第二项开始才是我们要向arr添加的项
+            arr[arr.length]=arguments[i]
+        }
+        return arr.length
+    }
+    var ary =[1,2]
+    mypush(ary,4,5,[6,7,8],9)
+    console.log(ary)
+
+    //pop 删除数组的最后一项 返回值是删除的那一项
+    //ary.length--
+    function mypop(){
+        var a =arr[arr.length-1]
+        arr.length --
+        return a
+    }
+    var ary =[1,2,3]
+    var res =mypop(ary)
+    console.log(ary.res)
+
+    //unshift() 用法和返回值等同于push 只是向数组的头部添加
+    //shift(0) 用法和返回值等同于pop 只是删除数组的头部
+    //splice(n,m,X,Y,Z)从索引n开始删除m个 用xyz替换删除的哪些项
+    //若m为0 则添加的项是在索引n的前边添加
+    //使用splice 实现 push pop unshift shift
+    function mypush2(arr,...a){
+        //...在函数中叫做剩余运算符 abc是个数组 存储的是除了第一项之后的所有项
+        arr.splice(arr.length,0,...abc)//拓展运算符 解构 把abc数组拆开
+    }
+    return arr.length
+    var ary =[1,2]
+    mypush2(ary,4,5,[6,7,8],9)
+
+    function mypop2(arr){
+        return arr.splice(arr.length-1,1)[0]
+    }
+    function myunshift(){
+
+    }
+    function myshift(){
+
+    }
+</script>

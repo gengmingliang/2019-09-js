@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1{
+            color: pink;
+            background: skyblue;
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <h1>距离下班还剩<span id="time">00时00分00秒</span></h1>
+</body>
+</html>
+<script>
+    /*
+        倒计时 首先知道当前时间和目标时间的时间差
+        先获取当前时间到1970年的毫秒差 
+        在获取下午6点到1970年的毫秒差
+        两者相减就是我们要的时间差
+    */
+    function timecount(){
+        var target =new Date('2019/8/17 21:30:00').getTime()
+            now = new Date().getTime()
+            time = target - now //毫秒数
+            //把毫秒数转成 时 分 秒
+            //先获取这些毫秒数中有几个整数个小时
+            //再去取剩余的毫秒数中整数个分钟
+            //最后再取剩余的毫秒数中整数个秒数
+            var h =parseInt(time/(1000*60*60)) //这是一小时对应的毫秒数
+            time =time-h*1000*60*60//剩余的毫秒数
+            var m =parseInt(time/(1000*60))//这是一分钟对应的毫秒数
+            time =time-m*1000*60
+            var s =parseInt((time/1000))
+
+            var str =`${h}时${m}分${s}秒`
+            document.getElementById('time').innerHTML =str
+    }
+    setInterval(()=>{
+        timecount()
+    },1000)
+</script>

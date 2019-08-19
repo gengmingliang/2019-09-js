@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <h1>累计数字<span id="num"></span></h1>
+</body>
+
+</html>
+<script>
+    //JS 是异步单线程
+    //settimeout setinterval
+    //setinterval 一直执行 settimeout 执行一次
+    //cleartimeout clearinterval
+
+    var timer = setTimeout(() => {
+        console.log(666)
+    }, 3000)
+    var timer1 = setTimeout(() => {
+        console.log(111)
+        clearTimeout(timer)
+    }, 1000)
+    var time2 = setInterval(function () {
+        console.log(888)
+        clearInterval(time2)
+    }, 2000)
+    var btn = document.getElementById('btn')
+    num = document.getElementById('num')
+    var n =0
+    var flag = false//true 代表正在走 false代表停止
+    var timer4 = ''
+    btn.onclick = function () {
+        if (flag) {
+            clearInterval(timer4)
+            flag =false
+        } else {
+            timer4 = setInterval(() => {
+                n++
+                num.innerHTML = n
+            }, 1000);
+            //启动了定时器就要把flase 变成true
+            flag=true
+        }
+    }
+    //定时器的bug 离开当前页面的时候 定时器的时间就不准了
+    
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            width: 800px;
+            height: 100px;
+            border: 1px solid coral;
+            margin: 0 auto;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    /*
+    for in 循环对象
+    for(var key in obj){
+        key 代表的是对象中的每一个属性名
+        obj[key] 代表的是属性名对应的属性值
+    }
+    */
+    var obj = {
+        a: 12,
+        b: { a: 20 },
+        c: 'hello',
+        d: true
+    }
+    for (var k in obj) {
+        console.log(k, typeof k)
+        console.log(obj[k])
+        console.log(obj.k) //就是获取 obj中的属性名 是k字符对应的属性值
+    }
+
+    /*
+    for 循环
+    for(var i=0;i<10;i++){
+        //先拿到i的值 然后用i的值去做比较 看条件是否成立 成立就执行循环体 
+        //循环体走完之后 把i加1 加完之后 再去进行条件判断 直到条件不成立跳出循环
+        //continue 跳出本次循环
+        //break 跳出整个循环 整个循环结束
+    }
+    */
+    var olis = document.getElementsByTagName('li')
+    console.log(olis)
+
+
+    for (var i = 0; i < olis.length; i++) {
+        olis[i].style.background = i % 2 ? 'skyblue' : 'pink'
+        olis[i].onmouseenter = function () {
+            console.log(this)
+            var color1 = this.style.background
+            this.style.background = 'gold'
+            this.onmouseleave = function () {
+                console.log('离开')
+                this.style.background = 'color1'
+            }
+        }
+    }
+</script>

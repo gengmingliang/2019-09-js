@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inp" type="text">
+    <button id="btn">按钮</button>
+    <div class="box">
+        <h2>
+            我是<span id="name1">xxx</span>
+        </h2>
+    </div>
+</body>
+</html>
+<script>
+    //基本数据类型  引用数据类型
+    //堆内存  栈内存
+    //基本数据类型都是存储在栈内存中 栈内存还提供了代码的运行环境
+    //引用数据类型都是存储在堆内存中的；
+    //基本数据类型包括：number string Boolean null undefined；
+    /*
+    字符中就是引号包起来的那部分 都是成对出现的
+    反斜杠 在字符串中表示转义的意思 
+    字符串拼接：是用加号来写的
+
+    `` es6 的字符串写法 ：若想用字符串拼接 则可以使用${}
+    优点就是 在反引号中可以直接换行书写
+    //innerHTML 是给对应元素设置内容的 他是元素天生自带的一个属性
+    字符串有length这个属性 他代表的是字符串的长度 若想获取字符串中的某个字符我们可以通过对应
+    的索引去获取
+    */
+   //点击按钮把文本框的内容展示到span中？
+   var val='你好啊'
+   btn.onclick =function(){
+       var val =inp.value;
+       //把文本框的内容放到span中
+       name1.innerHTML = val
+       //使用 i标签把val包起来；就是给innerHTML 赋予的值应该是<i>val</i>
+    //    name1.innerHTML ='<i>'+val+'</i>'
+       name1.innerHTML =`<i>${val}</i>`
+   }
+
+   /*
+   数字 number 整数 小数 NaN
+   number()//从左往右解析 只要是有非数字 结果就是NaN
+   若是其他的数据类型 数组 对象 函数 都会先转成字符串
+   number('') number([]) number(null) number(false) 结果都是零
+   parseint()从左向右解析 只要是碰到非数字 即停止转化 若第一个就是数字 结果就是NaN
+   parsefloat()规则同上 只是碰到小数点不会停止转化
+   能出现NaN：强制转化失败 四则运算失败
+   //+ - * / %
+   -* / %的运算规则 ：把符号的两边内容先用number 转换成数字再去进行运算
+   1-'1q'==>NaN 凡是与NaN做运算的数字 结果都是NaN
+   isNaN('12q')true isNaN的运算过程 先把实参用number转化 结果在给isNaN使用
+   NaN==NaN NaN和谁都是不相等的  
+   */
+  /*
+  布尔类型 true false
+  Boolean()
+  0 NaN  '' null undefined 只有这五个值转布尔类型是false 其他都是true
+  ！1 ==> false 先转布尔再去取反 
+  1=='1' //相对等于
+  1 ！='1'//相对不等
+  1 ==='1'//绝对等于
+  1 ！=='1'//绝对不等
+  */
+
+  /*
+  null 空指针 通过id获取元素时见过
+  undefined 未定义 一个对象中没有对应的属性时；一个函数执行不写return 或者写了return后边没有写东西 那么函数的执行结果就是undefined 形参未赋值时的默认值是undefined
+  */
+</script>

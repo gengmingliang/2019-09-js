@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+    数组的去重方法
+        双for去重
+        对象去重
+        indexof
+        lastindexof
+    */
+    //双for去重 ：用前边的项和后边的所有项进行一轮一轮的比较 后边项重复的删除即可
+    function unique(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            var temp = arr[i]
+            for (var j = i + 1; j < arr.length; j++) {
+                if (temp == arr[i]) {
+                    var t = arr[j]
+                    arr[j] = arr[arr.length - 1]
+                    arr[arr.length - 1] = t
+                    arr.length--
+                }
+            }
+        }
+        return arr
+    }
+
+    function unique2() {
+        var obj = []
+        arr.foreach((v, i) => {
+            obj[v] = v
+        })
+        var temp = []
+        for (var k in obj) {
+            temp.push(obj[k])
+        }
+        return temp
+    }
+    function unique3() {
+        //indexof lastindexof
+        //indexof===lastindexof
+        for (var i = 0; i < arr.length; i++) {
+            var temp = arr[i]
+            var n = arr.indexof(temp)
+            var m = arr.lastindexof(temp)
+            if (n !== m) {
+                arr.splice(m, 1)
+                i--//不能保证后边只有一个重复的
+            }
+        }
+        return arr
+    }
+</script>

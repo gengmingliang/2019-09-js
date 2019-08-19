@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*arguments 代表的是实参集合 函数内部的一个关键字
+    */
+    function sum(a, b) {
+        console.log(a + b)
+        console.log(arguments)//类数组
+    }
+    sum(1, 2, 3, 4, 5, 6)
+    //不定项求和：
+    //sum2(1,2)sum2(2,3,4,5,6)
+    function sum2() {
+        //所有的实参都在arguments中存储 我们要做的就是吧arguments中的每一项累加起来
+        //然后把结果返回去即可
+        var num = 0
+        for (var i = 0; i < arguments.length; i++) {
+            //    arguments[i]代表的是集合中的每一项
+            //  累加
+            num = num + arguments[i]
+        }
+        //    console.log(num)
+        return num
+    }
+    var res1 = sum2(1, 2)
+    var res2 = sum2(2, 3, 4, 5, 6)
+
+    //加入参数传递的是 sum2('1','w',2,5,'q') 在上述的函数的基础上 把函数执行的结果是7
+    function sum3() {
+        var num = 0
+        for (var i = 0; i < arguments.length; i++) {
+            if (typeof arguments[i] ==='number' && !isNaN(arguments[i])) {
+                //类型必须是数字 而且还不能是NaN
+                num = num + arguments[i]
+            }
+        }
+        return num
+    }
+    console.log(sum3('1','w',2,5,'q',NaN))
+</script>

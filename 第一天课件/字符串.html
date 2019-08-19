@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击按钮</button>
+    <script>
+        //string 字符串
+        var zf = '珠峰培训'
+        var a = 666
+        //字符串就是被引号包含的那部分 ，单引号 双引号 反引号(es6)
+        //双引号之间不能用双引号
+        //单引号之间不能用单引号
+        var zf3 ='你好 \'珠峰\'!!'//反斜杠在这里代表的是转义的意思
+        var zf4 ="你好'珠峰'！！"
+        console.log(zf3)
+
+        //字符串拼接
+        var a='hello'
+        var b='world'
+        var c= a +' '+ b//用a代表的字符 去拼上一个空格 再去拼上b代表的字符
+        console.log(c)
+        //点击弹出按钮 弹出hello world
+        var btn =document.getElementsByTagName('button')[0]//获取button元素
+        btn.onclick =function(){
+            alert(c)
+        }
+        //在反引号中 拼接变量 通过使用${变量名}的方式
+        var a =666
+        var str =`hello
+        hahahaha${a}
+        
+        world`//拼接dom结构
+        console.log(str)
+    </script>
+</body>
+
+</html>

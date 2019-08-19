@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //tostring() 把每一项用逗号拼接成字符串
+    var ary =[1,2,3]
+    var res =1+null+undefined+ary+[]+null
+    
+    //join() 按照指定字符 拼接字符成字符串 不传参数默认的是逗号拼接
+    var  res2 =ary.join('+')//'1+2+3'
+    function myjoin(ary,str){
+        var s =''
+        //这个for循环只拼接除最后一项的前几项
+        for(var i=0;i<ary.length-1;i++){
+            s = s + ary[i]+str
+            s+= ary[ary.length-1]//单独拼接最后一项
+        }return s
+
+        //第二种思路就是正常使用for循环 把最后的加号去掉 然后使用字符串的slice方法把最后的加号去掉
+    }
+    var res =myjoin(ary,'+')
+    console.log(res)
+    //ary.slice(n,m)从索引n到索引m，包含索引n不包含索引m
+    //获取第n项的第m项 ary.slice(n-1,m-1+1)
+    //ary.slice(n)获取索引n后边的所有项
+
+    //concat 合并数组
+    ary.concat(1,2,[3,4,5],6)
+    var ary =[1,2,3]
+    var res =ary.concat(4,5,6,[6,7,8])
+    console.log(res)
+
+    //indexof lastindexof
+    //foreach map
+    //map的返回值是一个新数组 新数组中的项是由回调函数的返回值决定的
+    var ary =[2,3,4]
+    var res =ary.map((v,i)=>{
+        return v +'hello'
+    })
+</script>

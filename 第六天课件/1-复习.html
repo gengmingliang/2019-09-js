@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>document.get
+    /*
+        js引入方式 三种
+        debugger 断点
+        js的输出方式 五种 
+        getelementbyid  getelementsbyclassname  getelementsbytagname/all getqueryselector/all
+        变量 var let const function /class import
+        变量名 字母 _ $ 开头可以使用驼峰式命名 语义化 不能使用关键字保留字
+        数据类型：基本数据类型 引用数据类型 
+        根本区别 ：基本数据类型是操作值的  引用数据类型操作地址的
+        基本数据类型存储再栈内存，还可以提供代码的运行环境 引用数据类型存储再堆内存中
+        基本数据类型：string Boolean number null undefined
+        string '' "" `` 字符串拼接+；${变量}   \转义
+        number 整数 小数 NaN （not a number）
+         number() 把其他数据类型转成数字 ：从左到右查看 碰到非数字就是NaN
+         parseint()从左到右查看 遇到非数字立即停止转化 第一个就是非数字的话 就是NaN
+         parsefloat()同上
+         四则运算 + - * / % 除了+之外 其他几项运算先把两边转成number(转成number之前先转化成string) 再去进行运算
+         NaN和数字运算的结果就是NaN
+         NaN===NaN false
+         isNaN('12q') 先用number把12q转成数字 然后再去判断
+         boolean true false    0 NaN '' null undefined 就这五个是true 其他的都是false
+         Boolean() 把其他类型转换成布尔
+         ！感叹号是取反值用的
+         null undefined 
+        
+        引用数据类型  普通对象{} var obj ={属性名:属性值，属性名:属性值,key:value}
+            获取对象中的某个属性名中的属性值 打点 [] 如果属性是个数字 只能用中阔号
+            对象的存储过程：在堆内存中开辟一个空间 把对象中的键值对一对一对的存储到这个空间中 然后把地址给对应的变量
+
+            判断数据类型
+            typeof xxx
+            object。prototype.tostying.call(xxx)
+            constructor
+            instanceof
+
+            判断语句 if else  ？：  switch case
+            || &&
+
+            循环语句
+            for in 一般用来循环对象for(var k in obj)
+            for(var i= 0;i<10;i++){
+                循环体
+                console.log(i)
+                //continue 打断本次循环
+                //break 打断整个循环
+            }
+            while(条件){}
+                循环体
+            }
+            函数 function 函数名(形参){函数体}
+            函数名(实参)argument this return
+            argument是一个函数集
+            this 执行主体 对于时间绑定中的this 就是当前操作的dom元素
+             
+        */
+    function myisnan(n) {
+        n = Number(n)
+        if (n + '' === 'NaN') {
+            return true
+        }
+        return false
+    }
+</script>

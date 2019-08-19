@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name ='小红'
+        var age =10
+
+        var name3 ='小明'
+        var age1 =12
+        //对象 {属性名:属性值，属性名2:属性值2}
+        /*
+            堆内容 存储的引用数据类型
+            JS读取这段代码的时候 发现是一个普通对象 就会去堆内存中开一个新的空间
+            然后把对象中的键值对(属性名，属性值)，挨个存储到这个空间中，然后把空间地址赋给对应的变量per1
+            当我们使用pre1 这个变量时 浏览器发现它是一个地址 会自动把这个地址的内容返回到当前使用的地方
+        */
+        var per1={
+            name:'小红',
+            age:10,
+            sex:'女',
+            hobby:'吃',
+            hair:'long'
+        };
+        var per2={
+            name :'小明',
+            age:12,
+            sex:'男'
+        }
+        console.log(per1)
+        /*
+        属性名可以是单独的数字 但是不可以数字+字母的格式
+        属性名的引号是可以省略的 一般是都不写的
+        属性名其实都是字符串
+        属性名是否可以重复呢？
+        自己写的时候是可以写重的 但是存储的时候 会自动用下边的重复的属性名 会把上边的覆盖掉
+        调用时一个对象的属性名 只会出现一次
+        */
+       var per3 ={
+           "name":123,
+           1:12345,
+           name:'小红',
+           name:'小明'
+       }
+       console.log(per3)
+       var per4={};//空对象
+       console.log(per3.name)
+       //对于数字属性来说 我们使用中括号的方式调用\
+       //中括号中放置的是字符串 若不是 字符串也是数字，那么js会把中括号内部的值 当做变量使用
+       //xxx is not defined xxx在没有定义的前提下就使用了
+       console.log(per3[1])
+       console.log(per3[name])//当我们调用一个对象的某个属性时，这个属性不存在 那么我们的到的就是undefined。
+       console.log(per3['name'])//等价于 per.3name
+       console.log(per3[name1])//name1是个变量 但是这个变量 我们没有定义过 这时就会报 is not defined
+       console.log(per3['name1'])//等价于per3.name1
+       //打点的和[字符串]是等价的 若中括号中 放置的不是字符串也不是数字 那么他就是一个变量，这时需要我们把变量对应的值放到这个位置 再去取对应的值
+        </script>
+</body>
+</html>

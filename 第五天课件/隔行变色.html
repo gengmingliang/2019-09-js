@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            background:palevioletred
+        }
+        li {
+            width: 600px;
+            height: 200px;
+            border: 1px dotted olivedrab;
+            margin: 0 auto;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    //设置一个变量 用来存储操作的某行的原来的颜色
+    //鼠标进入某行的时候 给col赋值一个当前行的颜色
+    var col =''
+    //第一步获取要操作的dom元素
+    var olis = document.querySelectorAll('li')
+    //第二种方式 利用元素自身去存储之前的背景色
+
+
+    //实现隔行变色 给每一行设置一个颜色
+    for (var i = 0; i < olis.length; i++) {
+        //olis[i]代表每一个li
+        olis[i].style.background = i % 2 ? 'skyblue' : 'pink'
+        olis[i].mybg=olis[i].style.background
+        olis[i].myindex=i
+        olis[i].onmouseenter = function () {
+            //鼠标进入
+            //this代表当前操作的元素
+            col=this.style.background
+            this.style.background = 'white'
+        }
+        olis[i].onmouseleave =function(){
+            this.style.background =col
+        }
+        olis[i].onclick =function(){
+            alert(`这是第${this.myindex}行 背景色是${this.mybg}`)
+        }
+    }
+    //点击某一行时  弹出这是xx行 背景色是xx
+    
+</script>

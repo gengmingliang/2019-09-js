@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href=".//css/1.css">
+    <style>
+        /*内嵌式 一般会写css选择器 */
+        div {
+            /* 标签选择器 */
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 行内式 -->
+    <!-- <div style="color: bisque" onclick="alert(1111)">
+        hello world
+    </div> -->
+    <div style="color: bisque" id="box">
+        hello world
+    </div>
+    <!-- 
+        CSS的引入方式：行内式、内嵌式（必须写在head标签里）、外链式。
+        JS的引入方式：行内式、内嵌式、外链式。
+        1、行内式：容易混淆，一般情况下不写。禁止写。
+        2、内嵌式：在文档中写一个script标签即可，把对应的JS代码写在script标签内部即可。直接写在body里面即可。
+        3、外链式：仍是script标签 通过src行内属性引入一个外界的一个JS文件。
+     -->
+     <!-- <script>
+       box.onclick=function(){
+        //    翻译成汉语就是 点击box 要反馈出来的效果
+        alert(666);//alert 翻译成汉语就是弹出，即点击box 所弹出的对话框弹窗
+       }
+     </script> -->
+     <script src="../第一天课件/js/1.js">
+     //从上往下一步一步解析
+     //若一个script标签写了一个src属性，则标签内部包含的js代码就不再执行。
+     alert(111)
+     </script>
+</body>
+
+</html>

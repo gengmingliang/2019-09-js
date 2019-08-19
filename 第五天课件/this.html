@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+</body>
+</html>
+<script>
+/*
+this是函数中的另一个关键字 指的是函数的执行主体
+具体函数中的this指的是谁 我们现在记住事件绑定函数中的this是指当前的元素
+*/
+var btns =document.getElementsByTagName('button')
+console.log(btns)
+for(var i=0;i<btns.length;i++){
+    //btns[i]代表的是每一个button
+    btns[i].myindex=[i]
+    btns[i].onclick=function(){
+        console.log(this)
+        alert(i)
+    }
+}
+</script>

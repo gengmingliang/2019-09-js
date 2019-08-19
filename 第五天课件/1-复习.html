@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    /*
+    值类型是操作值的 存储在栈内存中 栈内存提供代码的运行环境的
+    引用数据类型是操作地址的 存储在堆内存中
+    基本数据类型 number string Boolean null undefined
+    引用数据类型：{} [] math date 正则 function
+    引用数据类型的普通对象：就是花括号包起来的那部分
+    获取对象中的某个属性对应的属性值：obj.age obj['age'] ===
+    obj.age=xxx
+    删除：真删除delete 假删除 obj.age=null
+    对象的存储过程：先去堆内存开辟一个地址 然后把键值对存储在这个地址中 然后把地址赋给变量
+    */
+    var age = 100;
+    var obj = {
+        age: age,
+        age2: 'age'
+    }
+    console.log(obj.age)
+    console.log(obj.age2)
+
+    /*
+    if eles
+    ? :
+    switch case
+    for in 一般用来循环对象for(var k in obj)
+    for  for(var i= 0;i<xxx;i++){}
+    while while(条件){循环体}
+    */
+</script>
+<script>
+    var mybtn = document.getElementById('btn'),
+        mybox = document.getElementById('box');
+    var flag = true;//true 代表显示 false代表隐藏
+    mybtn.onclick = function () {
+        flag = !flag
+        mybox.style.display = flag ? 'block' : 'none'
+    }
+    for (var i = 0; i < 10; i++) {
+        switch (i % 4 || '0') {
+            case 1:
+            case 3:
+                i += 1;
+                break;
+            case 0:
+            case 2:
+                i += 2;
+                break;
+            default:
+                i += 4;
+        }
+    }
+    console.log(i);
+  // || 前边成立给前边。前边不成立给后边
+    // i = 0；0 || '0' ===>  '0'; switch('0')  i-->4 i++ --> 5;
+    // i = 5; 1 || '0' ===>  1;  switch(1)     i-->6 i++ --> 7;
+    // i = 7; 3 || '0' ===>  3;  switch(3)     i-->8 i++ --> 9;
+    // i = 9; 1 || '0' ===>  1;  switch(1)     i-->10 i++ --> 11;
+
+    var obj2 = {
+    name: '小明',
+    age: '12',
+    sex: 1,
+    height: '120cm',
+    weight: '30kg',
+    weight2: 'qw30kg'
+};
+var obj2_2 = {};
+//要求 把obj2中的属性值中//(含)// 只有数字的键值对 复制一份到obj2_2中
+//循环对象  一个一个的查看  看键值对是否满足要求
+for(var k in obj2){
+    //k 是变量 每次都代表了相应的属性名
+    var val =obj2[k]//获取要用的属性值
+    //判断val 只有数字 用isnan
+    // if(isNaN(val)){
+
+    // }else{
+    //     //满足条件情况
+    // }
+    if(!isNaN(val)){
+        obj2_2[k]=val
+    }
+    console.log(obj2_2)
+}
+var str = 'qwwrwer123sdfsf234';
+var str2 = '';//'qwwrwersdfsf'
+//要求  str2 的内容是 str 排除数字的剩余字符组成的新字符串
+// 提示 用 for循环操作
+for(var i =0;i<str.length;i++){
+    if(isNaN(str[i])){ 
+        str2 =str2+str[i]
+    }
+}
+console.log(str2)
+
+for(var i = 0; i < 10 ; i++){
+    if(i < 5){
+        i += 3; 
+        continue;
+    }else {
+        i += 2; 
+        break;
+    }
+    i += 1;
+}
+console.log(i);
+</script>

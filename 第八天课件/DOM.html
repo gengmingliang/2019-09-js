@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        你好
+        <i>hello</i>
+        <!-- 这是注释 -->
+    </div>
+</body>
+</html>
+<script>
+    /*
+        节点：     元素节点 文本节点 注释节点 根节点
+        nodetype:     1       3        8      9
+        //使用nodetype 判断某个节点是不是元素节点
+        根节点 就是指document
+    */
+    var box =document.getElementsByClassName('box')[0]
+    console.dir(box)
+    console.log(box.parentNode)//指的是box的父节点
+    console.log(box.childNodes)//指的是box的所有的子节点
+    console.log(box.children)//指的是box所有元素的子节点 不兼容ie8
+    console.log(box.previousSibling)//指的是box的大一级节点 若不存在 结果就是null
+    console.log(box.previousElementSibling)//指的是box的大一级的元素节点 若不存在结果就是null 不兼容ie8
+    console.log(box.nextSibling)//指的是小一级的节点
+    console.log(box.nextElementSibling)//指的是小一级的元素节点 不兼容ie8 
+
+    //自己封装一个方法 可以获取某个元素下的所有元素的子节点
+    function getchildren(ele){
+        //从childnode中筛选出元素子节点即可
+        var ary =[]
+        for(var i =0;i<ele.childNodes.length;i++){
+            if(ele.childNodes[i].nodetype==1){
+                ary.push(ele.childNodes[i])
+            }
+        }return ary
+    }
+    var res =getchildren(box)
+    console.log(res)
+
+    function getbroele(ele){
+        //先获取ele的大一级节点 然后判断是不是元素节点不是的话 接着向上查找
+        var bro =ele.previousSibling
+        while(bro && bro.nodetype!==1){
+            //大一级节点存在并且不是元素节点 继续向上查找
+            //如何进行向上查找？
+            bro =bro.previousSibling
+        }
+        return bro
+    }
+    var res2 =getbroele(box)
+    console.log(res2)
+
+    /*
+        js怎么创造一个标签？
+    */
+    var span =document.createElement('span')//创造一个span标签
+     /*
+        给span加内容
+    */
+    span.innerHTML ='<h1>hello world</h1>'
+    // span.innerText ='<h1>你好，中国</h1>'
+    span.style.background = 'skyblue'
+    span.style.color = 'pink'
+    span.style.display='block'
+    
+    console.log(span)
+   /*
+        展示到页面上
+        box.appendchild(span); 把span添加到box的尾部
+   */
+   box.appendChild(span)
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <ul class="li"></ul>
+        <ul class="li"></ul>
+        <ul class="li" id="li"></ul>
+        <ul class="li"></ul>
+        <ul class="li"></ul>
+        <ul class="li"></ul>
+    </div>
+</body>
+</html>
+<script>
+    /*
+        节点
+        1 代表元素节点 nodetype
+        3 代表文本节点 nodetype
+        8 代表注释节点 nodetype
+        9 代表根节点   nodetype
+    */
+   var oli =document.getElementById('li')
+   console.dir(oli)
+
+   //父节点 是parentnode
+   //哥哥节点 是previoussibling
+   //哥哥元素节点 是previousElementSibling 不兼容ie6-8
+   
+   //自封的找哥哥节点的思路 先查看哥哥节点是不是元素节点 不是的话接着向上查找
+   function getbro(ele){
+    ele = ele.previoussibling
+    while(ele&&ele.nodetype!==1){
+        ele =ele.previoussibling
+    }
+    return ele
+   }
+   //last first
+
+   //JS 创造元素
+   var div =document.createElement('div')
+   div.innerHTML ='hello world'
+   //把创造的div放到oli中
+   oli.appendChild(div)
+
+   //获取html body
+   //document.getelementsbytagname('body')[0] docunment.body
+   //document.getelementsbytagname('html')[0] docunment.document.element
+</script>

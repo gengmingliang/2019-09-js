@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    console.log(Math.sqrt(9))//开方
+    console.log(Math.abs(-2))//绝对值
+    console.log(Math.pow(4,3))//4的3次方
+    console.log(Math.floor(3.8))//3向下取整
+    console.log(Math.floor(-3.8))//-4
+    console.log(Math.ceil(3.1))//4向上取整
+    console.log(Math.max(23,45,85,6,8,9,77))//取一组中的最大值
+    console.log(Math.min(23,45,8,99,6,55,44,12))//取一组中的最小值
+
+    //怎么求一个数组中的最大值？
+    var ary =[234,555,26,54,224,58,6,4,5,77]
+        //1.先排序再取值 sort((a,b)=>b-a)
+        //2.循环：假设法 假设第一项是最大的 然后循环数组 每一项跟假设出来的最大值相比较 不成立就把最大值换了
+        var max =ary[0]
+        for(var i= 1;i<ary.length;i++){
+            max>ary[i]?null:max=ary[i]
+        }
+        console.log(max)
+
+        //es6的解构(...)解构可以理解成把外边的中括号去掉
+        console.log(Math.max(...ary))
+        var a =[1,2],b=[3,4,5]
+        var c=[...a,...b]
+        console.log(c)
+
+        /*
+            四舍五入
+            math.round(3.4)
+            math.round(4.5) 
+
+            math.random()他的值是0-1之间的随机小数
+        */
+        //求一下0-9之间的随机数
+        Math.random()*9
+        //求1-11之间的随机数
+        Math.random()*10+1
+        //求3-18之间的随机数
+        Math.random()*15+3
+        //求n-m之间的随机数
+        Math.random()*(m-n)+n
+        //n-m之间的随机整数
+        Math.round(Math.random()*(m-n)+n)
+        //n-m之间的随机整数
+        Math.floor(Math.random()*(m-n)+n)
+</script>

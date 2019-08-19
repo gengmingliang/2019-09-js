@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            width: 400px;
+            height: 100px;
+            border: 1px solid coral;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        /*li:nth-child(2n){
+            background: rgb(36, 218, 193);
+        }
+        li:nth-child(2n+1){
+            background: rgb(187, 43, 43)
+        }
+    */
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+<script>
+    //使用js实现隔行变色
+    //设置每一行的背景色
+    var olis = document.getElementsByTagName('li')//olis是一个元素集合
+    // olis[0].style.background ='red'
+    // olis[1].style.background ='orange'
+    // olis[2].style.background ='yellow'
+    // olis[3].style.background ='green'
+    // olis[4].style.background ='skyblue'
+    // olis[5].style.background ='blue'
+    // olis[6].style.background ='purple'
+    for (var i = 0; i < 7; i++) 
+        //第一种方法
+        // console.log(i)
+        // olis[i].style.background='skyblue'
+        // i++
+        // olis[i].style.background='pink'
+
+        //第二种方法
+        // console.log(i%2)
+        // if (i % 2 == 0) {
+        //     olis[i].style.background = 'skyblue'
+        // } else {
+        //     olis[i].style.background = 'pink'
+        // }
+        //第三种方法
+        //i%2==0?olis[i].style.background='skyblue':olis[i].style.background='pink'}
+        // 第四种方法
+        // olis[i].style.background =i%2==0 ?'skyblue':'pink'
+        olis[i].style.background = i%2 ?'skyblue':'pink'
+        //若i%2为0时 那就是false 这是表达式执行的返回值 就是冒号后边的结果
+        //若i%2为1时 那就是true 这是表达式执行的返回值 就是问号后边的结果
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+        数组排序
+
+    */
+    var ary = [1, 2, 4, 5, 88, 6, 5, 54, 33, 56, 22]
+    ary.sort((a, b) => a - b)//(a,b)=>{return a-b}
+    console.log(ary)
+
+    //冒泡 排序
+    //两两比较 大的在前边 小的在后边 一轮
+    //正常 进行 ary.length轮
+    function mySort1(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            //轮数
+            //每一轮都要进行两两比较
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                //前一项就是 前一项arr[] 后一项arr[+1]
+                //第一项的索引是0 最后一项索引是length-1; 最后一项的后一项的索引是 length
+                //但是数组中没索引是 length的这一项 所以我们循环是的最后一项
+                //索引应该是 length-1
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+    var ary = [234, 456, 789, 987, 654, 321, 432, 654, 90];
+    console.log(mySort1(ary));
+</script>

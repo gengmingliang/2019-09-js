@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inp" type="text">
+    <button id="btn">点我</button>
+</body>
+</html>
+<script>
+    var n = 10,
+        m = '20';
+        var res = typeof(m)//他的返回值是一个字符串 
+        //数字类型的 返回的是字符串'number'
+        //字符串类型的 返回的是字符串'string'
+        //布尔类型的 返回的是字符串'boolean'
+        //typeof undefined 返回的是字符串'undefined'
+        //typeof null 返回值是字符串的 'object'
+        var obj ={};
+        console.log(typeof obj)
+        console.log(res)
+        /*
+        typeof 可以区分基本数据类型（null除外） 但是没办法区分引用数据类型
+        xxx.constructor去判断数据类型
+        object.prototype.tostring.call(xxx)
+        xxx instanceof 你猜的类型:只能判断引用数据类型 返回值是true或者false
+        */
+       var res2 =typeof typeof 1
+
+       btn.onclick = function(){//点击按钮
+           var val =inp.value;//获取输入框内容
+           var str =isNaN(val) ? '不是有效数字':'是有效数字';//根据输入框的内容来决定显示的文案
+           alert(str)
+       }
+</script>

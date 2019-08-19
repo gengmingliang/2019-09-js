@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        语法：if(条件){
+            条件成立执行的代码
+            if(条件){
+                条件执行的代码
+            }else{
+                条件不成立执行的代码
+            }
+
+
+            if(条件1){
+                条件1成立执行的代码
+            }else if{
+                条件2 成立执行的代码
+            }else{
+                上边两个都不成立所执行的代码
+            }
+            判断句的if()会有一个 隐式转化；会把小括号中的条件 用Boolean转化成布尔类型
+            然后在进行判断。
+        */
+        if (1 > 2) {
+            console.log(666)
+        } else if (5 > 2) {
+            console.log(777)
+        }
+        if (true) {
+            console.log('哈哈哈')
+        }
+        if (0 || 1) {
+            //||代表的意思是0或者1其中一个成立时 就会执行输出代码
+            console.log('66666')
+        }
+        if (1 && 0) {
+            //&&代表的是同时成立的时候才能执行输出代码
+            console.log('1111')
+        }
+        //三元运算符
+        //条件 ？条件成立执行 ：条件不成立时执行
+        //这个表达式是有返回值的，返回值是对应执行的结果
+        var res = 1 > 2 ? 666 : 888
+        console.log(res)
+        /*
+        switch (值) {
+         case 值1:
+             值和值1相等时 会执行这里的代码
+             console.log(1)
+             break代表的是打断执行 不在走下边的代码 若不写break 则当条件走进这个case时 发现没有break 则会把下边的case 执行掉，不管条件是否成立，都会一直执行 知道碰见break才会停止。
+             break;
+         case 值2:
+             
+             break;
+         default:
+ 
+             break;
+     }
+         */
+        //== 相对比较：他会把不同类型的数据转成统一个数据类型 然后再去比较
+        //=== 绝对比较：首先会查看是否是同一个数据类型 不是同一个数据类型 结果直接就是false 
+        //switch case 用的是绝对比较
+        console.log(1 == 1)
+        console.log('1' == 1)
+        console.log(1 === 1)
+        console.log('1' === 1)
+
+        switch (5 % 3) {
+            case 1:
+                console.log(1)
+                break;
+            case '2':
+                console.log('2')
+            // break;
+            case 2:
+                console.log('2')
+            default:
+                console.log(5555)
+                break;
+        }
+        switch (1) {
+            case 1:
+            case 2:
+            case 3:
+                //相当于写了一个或的语法 值 ===> 或者值 ===>2 或者值===>3 只要是有一个成立就会输出代码
+                console.log(1 || 2 || 3)
+                break;
+            default:
+                console.log(55555)
+                break;
+        }
+    </script>
+</body>
+
+</html>

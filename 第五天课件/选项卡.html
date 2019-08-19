@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 600px;
+            border: 1px solid pink;
+            margin: 0 auto;
+        }
+
+        ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+
+        ul li {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+            color: black;
+            font-size: 28px;
+        }
+
+        ul li:hover {
+            background: skyblue
+        }
+
+        ul li.current {
+            background: pink
+        }
+
+        .body_box {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .body_box div {
+            text-align: center;
+            line-height: 200px;
+            font-size: 150px;
+            background: rgba(43, 233, 168, 0.5);
+            display: none
+        }
+
+        .body_box div.current {
+            /* body_box 下的带有current类名的div 才有当前的样式 */
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="tab_box">
+            <li class="current">css</li>
+            <li>html</li>
+            <li>js</li>
+        </ul>
+        <div class="body_box">
+            <div class="current">泡面</div>
+            <div>香肠</div>
+            <div>二狗</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    /*
+        有current类名的 li 会有被选中的样式
+        有current类名的 div 会被显示出来
+        //点击上边的li 对应显示下边的div
+    */
+    var tabs = document.getElementsByTagName('li')
+        bodys = document.querySelectorAll('.body_box div')
+    //点击tab 切换
+    for (var i = 0; i < tabs.length; i++) {
+        //代表每一个tab
+        tabs[i].myindex = i
+        tabs[i].onclick = function () {
+            //点击那个元素 就获取那个颜色的背景色 给点击的元素加上一个current 类名即可
+            //现在的缺陷是 点击当前的元素可以加上类名 但是其他的标签类名没有移出
+            //解决方式是 添加之前 先都全部移出current 类名 然后再给对应的元素添加
+            // this.classname ='current'
+            for (var j = 0; j < tabs.length; j++) {
+                tabs[j].className = ''//清除所有li的类名
+                bodys[j].className = ''//清除所有body div的类名
+            }
+            this.className = 'current'
+
+            //点击第几个li 就让第几个div显示
+            //通过this.myindex 可以知道当前点击的元素的索引
+            //bodys[this.myindex]是当前要显示的div
+            bodys[this.myindex].className = 'current'
+        }
+    }
+</script>

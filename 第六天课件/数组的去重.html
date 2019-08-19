@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var ary =[1,2,3,4,5,6,7,8,9,5,6,8,4]
+    /*
+        数组去重 把数组中重复项删除
+
+    */
+    //方法一 双for去重
+    for(var i =0;i<ary.length;i++){
+        var temp =ary[i]
+    for(var j=i+1;j<ary.length;j++){
+        if(temp===ary[j]){
+            ary.splice(j,1)//数组塌陷
+            j--
+        }
+    }
+    }
+    console.log(ary)
+    //方法二 利用对象的属性名不能重复
+    var ary =[1,2,3,4,5,6,7,8,9,5,6,8,4]
+    var obj ={}
+    ary.forEach(function(v){
+        obj[v] = v
+    })
+    console.log(obj)
+    var arr =[]
+    for(var k in obj){
+        arr.push(obj[k])
+    }console.log(arr)
+</script>

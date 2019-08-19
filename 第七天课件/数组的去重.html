@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var ary = [1, 2, 3, 5, 4, 6, 8, 4, 5, 2, 4, 3]
+    //双for去重
+    //对象去重
+    function unique1(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            var temp = arr[i]
+            for (var j = i + 1; j < arr.length; j++) {
+                if (temp === arr[i]) {
+                    //跟j这一项重复 就把j这一项删除
+                    arr.splice(j, 1)//数组塌陷
+                    j--
+                }
+            }
+        } return arr
+    }
+        //该方法是否改变了原有数组？
+    // var res =unique1(ary)
+    // console.log(res,ary)
+
+    function unique2(arr){
+        //利用对象的属性名不能重复
+        //把数组中的每一项当作 对象的属性名存储到对象中
+        var obj =[]
+        arr.foreach((v)=>{
+            obj[v]=v//假如v代表的是1 给obj增加一个属性名是1 属性值也是1的一个键值对
+        })
+        console.log(obj)
+    }   //把对象中存储的键值对拿出来放到新数组中 然后把新数组返回
+        var a =[]
+        for(var k in obj){
+            a.push(obj[k])
+        }
+        return a
+        var res =unique2(ary)
+        console.log(res,ary)
+
+        //利用indexof 和last indexof 去重？
+        function unique3 (arr){
+            for (var i= 0;i<arr.length;i++){
+                var n =arr.indexof(arr[i])
+                    m=arr.lastindexof(arr[i])
+                    if(n !==m){
+                        arr.splice(m,1)//n和m不同说明 索引为m的项是重复项 需要我们删除掉
+                        //删除之后 我们仍然需要用当前的 arr[i] 接着区查看 查看是否还有重复的
+                    }i--
+            }return arr
+        }
+        var res4 =unique3(ary)
+        console.log(res4,ary)
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">点击我</button>
+    <script>
+        /*
+        增删改查
+        */
+        //查 ：获取对象中，某个属性对应的属性值
+        //怎么获取name属性对应的值？
+        //两种方式 obj['name'] obj.name
+        var obj = {
+            name: '珠峰',
+            age: 10
+        }
+        var btn = document.getElementsByClassName('btn')[0];
+        btn.onclick = function () {
+            alert(`${obj.name}${obj.age}年`)
+        }
+        console.log(btn)
+
+        //查obj中的sex属性
+        console.log(obj.sex)//得到的是undefined
+        obj.sex=666;//他的意思就是把666 赋给obj的sex属性 ==>给对象增加了一个属性 增
+        console.log(obj)
+
+        obj.age =20;//把20赋给obj的age属性；==> 修改对象的属性值 替换原来的属性 改
+        console.log(obj)
+        //真删除 和 假删除 删
+        obj.sex=null ;//假删除 使用null替换原来的旧值 
+        delete obj.sex;//真删除 直接把对应的属性从中移除
+        console.log(obj)
+    </script>
+</body>
+
+</html>

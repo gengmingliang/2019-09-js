@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        定时器 到点做什么事
+        settimeout() 只执行一次就结束
+        setinterval() 一直不停的执行？ clearInterval
+        //异步 同步
+        clearInterval(timer)timer是set interval执行的返回值 //清除定时器
+        cleartimeout(timer)
+    */
+    setTimeout(()=>{
+        console.log(666)
+    },2000)//2000毫秒 也就是2秒
+    //两秒之后执行回调函数
+    var timer =window.setInterval(function(){
+        console.log(999)
+    },2000)
+    clearInterval(timer)
+    console.log(5555)
+
+    //怎么结合settimeout和递归实现setinterval
+    function f(){
+        console.log('我是f')
+        setTimeout(()=>{
+            f()
+        },1000)
+    }
+    f()
+</script>

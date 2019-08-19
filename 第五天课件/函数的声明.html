@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //创造一个函数
+    function sum(){
+        var tatal =10+20;
+        console.log(total)
+    }
+    //开辟一个堆内存 把函数体当作字符串存储起来 然后把地址赋给函数名
+    //函数名()
+    var fn =function(){
+        console.log('fn')
+    }
+    fn()
+
+    /*
+    形参 形式上的参数 在函数定义的时候 写在小括号中的字符
+    实参 实际上的参数 在函数执行的时候 写在小括号中的字符
+
+    形参和实参是按照位置一一对应的
+    函数的执行次数是没有任何要求的
+
+    形参个数大于实参个数 实参传递的不够数 多余的哪些形参值是undefined
+    函数的运行结果是由return决定的
+    一个函数体中若写了 return 但是后边没有跟任何内容 或者就没有写return
+    那么 这个函数的返回值就是undefined
+    return的两大作用
+        一个是决定了函数的运行结果
+        在一个就是打断函数的执行
+    */
+   function sum2(a,b){
+       console.log(a+b)
+   }
+   sum(1,2)
+   for (var i=0; i<100;i++){
+       sum2(i,i++)
+   }
+</script>

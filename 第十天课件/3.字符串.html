@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+        str.split('+') 返回值是把str按照 + 分割成数组
+        ary.join('+') 返回值是把数组中的每一项按照指定字符拼接成字符串
+        str.replace() 替换 
+    */
+    var ary = [2, 3, 4]
+    var str = ary.join('+')//"2+3+4"
+    var res1 = str.replace('+', '-').replace('+', '-').replace('+', '-')
+    var res2 = str.replace(/\+/g, '-')
+    console.log(res1)
+
+    var str = 'http://www.zhufengpeixun.cn/?ref=qipaoxian&a=12&b=13'
+    // (ref: 'qipaoxian', a:'12', b:'14')
+    function getQuery(str) {
+        //使用split 方法分割字符串 先用? 分割 再用& 分割 再用 =分割
+        var str2 = str.split('?')[1];
+        var ary = str2.split('&');
+        var obj = [];
+        ary.forEach((v, i) => {
+            var arr = v.split('=');// 第一项作为属性名 第二项作为属性值
+            obj[arr[0]] = arr[1]
+        })
+        return obj;
+    }
+    var res = getQuery(str);
+    console.log(res);
+
+    var str = 'dsanjdwqdigfydusoisafewffasgdfweygf'
+    function fn(str){
+        var obj = {};
+        for(var i = 0; i < str.length ; i++){
+            // 判断对象中是否出现过某个属性
+            if(obj[str[i]]){
+                // obj中存在 str[i] 这一项
+                obj[str[i]] += 1; 
+                continue;
+            }
+            obj[str[i]] = 1;
+        }
+        console.log(obj)
+        // 怎么获取对象中的值最大的那一个键值对
+        var max = 0;
+        var key = '';
+        for(var k in obj){
+            if(obj[k]>max){
+                key = k;
+                max = obj[k]
+            }
+        }
+        var temp = {};
+        temp[key] = max
+        return temp;
+        // return {
+        //     key:max
+        // }
+    }
+
+</script>

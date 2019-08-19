@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        珠峰培训 你好
+    </div>
+    <script>
+        var a  = 10
+        var b = a 
+        b=100
+        console.log(b);//100
+        console.log(a)//10
+
+        var obj ={
+            name:666
+        };
+        var obj2 =obj
+        obj2.name =888
+        console.log(obj.name)
+        console.log(obj2.name)
+        //值类型和引用数据类型的最根本的区别就在于 值类型是操作值的 引用数据类型是操作地址的
+        var box = document.getElementsByClassName('box')[0];
+        box.style.color ='red'
+         var sty = box.style;
+         console.log(sty)//(..)
+         sty.color ='green'//green 是吧style地址中的color 换成了green
+
+         var col =box.style.color;
+         console.log(col)//green
+         col='blue'//col 代表的是一个字符串 是一个值类型 只是把col这个变量对应的值改掉了 style里的地址中的color没改。
+        </script>
+</body>
+</html>

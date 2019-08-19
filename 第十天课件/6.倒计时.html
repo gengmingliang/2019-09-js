@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <div id="box"></div>
+</body>
+
+</html>
+<script>
+    /*
+        倒计时的思路 用目标时间减去当前时间 剩余的时间就是倒计时    
+    */
+    function f() {
+        var target = new Date('2019-8-18 15:00:00').getTime()
+        var now = new Date().getTime()
+        time = target - now
+        var h = parseInt(time / (60 * 60 * 1000))
+        time = time - h * 60 * 60 * 1000
+        var m = parseInt(time / (60 * 1000))
+        time = time - m * 60 * 1000
+        var s = parseInt(time / 1000)
+        var b = document.getElementById('box')
+        box.innerHTML = `距离考试还有${h}时${m}分${s}秒`
+    }
+    var timer =setInterval(function(){
+        f()
+    },1000)
+</script>

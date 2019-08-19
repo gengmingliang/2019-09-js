@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    基本数据类型 string number Boolean null undefined
+    引用数据类型 基本数据类型操作值 引用数据类型操作地址
+    var obj={属性名：属性值，key：value}键值对 不同的键值对用逗号隔开
+    //获取某个属性对应的属性值
+    obj.xxx
+    obj['xxx']
+    若key也就是属性名是数字的话，只能是用中括号[]
+    获取一个不存在的属性值时，拿到的是undefined
+    新增和修改的写法是一样的
+    真删除是delete 假删除是null
+    */
+
+    //变量和属性：去使用一个不存在的变量时，会直接报错。但是使用不存在的属性的时候，他会提示undefined 不会报错。
+    //栈内存：存储值类型 提供的是运行环境
+    //堆内存：存储引用数据类型 并提供一个对应的地址
+    var a =1
+    var b =a
+    b = 2
+    console.log(a)
+
+    var obj ={
+        age:10
+    }
+    var obj2 =obj//把ojb对应的地址 拷贝一份 给了obj2，那么obj和obj2公用的一个地址
+    obj2.age =100//把obj2 对应的地址中的age 改成了100
+    console.log(obj.age)//所以输出的结果就是100
+    /* var n= 1
+       n++  n= n+1 先去做其他运算 然后再去做累加
+       ++n  先做自身累加 再做其他运算 
+    */
+    </script>
+</body>
+</html>

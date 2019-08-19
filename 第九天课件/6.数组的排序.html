@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="up">升序</button>
+    <button id="down">降序</button>
+</body>
+
+</html>
+<script>
+    var ary = [
+        {
+            name: 123,
+            age: 12
+        },
+        {
+            name: 1234,
+            age: 10
+        },
+        {
+            name: 12345,
+            age: 13
+        },
+        {
+            name: 123456,
+            age: 11
+        },
+        {
+            name: 1234567,
+            age: 14
+        },
+    ]
+    //把该数组以age属性进行排序
+    ary.sort((a, b) => {
+        return a.age - b.age
+    })
+    var up = document.getElementById('up')
+    var down = document.getElementById('down')
+    up.onclick = function () {
+        ary.sort((a, b) => {
+            return a.age - b.age
+        })
+        console.log(ary)
+    }
+    down.onclick = function () {
+        ary.sort((a, b) => {
+            return b.age - a.age
+        })
+        console.log(ary)
+    }
+
+    //冒泡 快速
+    //冒泡排序
+    //两两排序 大的在前边小的在后边
+    //正常进行ary.length
+    function mysort1(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 0; j < arr.length; j++) {
+                //前一项是arr[j]后一项是arr[j+1]
+                //第一项索引是0 最后一项是length-1 最后一项的后一项的索引是length
+                //但是数组中没有索引是length这一项所以我们循环时的最后一项的索引应该是length-1
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = temp
+                }
+            }
+            return arr
+        }
+    }
+    var ary = [23, 45, 78, 95, 55, 12, 45, 111]
+    console.log(mysort1(ary))
+
+    //快速排序
+    //递归的思想
+    //函数内部自己调用自己，要注意边界问题
+    function f() {
+        f()
+    }
+    function sum(n) {
+        if (n >= 0) {
+            return n + sum(n - 1)
+        } return 0
+    }
+    sum(100)
+
+    //0-100之间 3的倍数或5的倍数
+    function sum2(m) {
+        if (m <= 0) {
+            return 0
+        }
+        if (m % 3 == 0 || m % 5 == 0) {
+            return m + sum2(m - 1)
+        }
+        return 0 + sum2(m - 1)
+    }
+    sum2(100)
+
+    //快速排序的思路
+    //一直进行 ：把数组拆成三部分 中间一项 左边一个数组（小项）右边一个数组（大项）
+    //直到数组为空或者数组只有一项的时候停止
+    function mysort2(arr) {
+        if(arr.length<=1){
+            //若数组是个空数组 或者数组中只有一项的时候就不用在进行拆分比较了
+            return arr
+        }
+        var n = parseInt(arr.length / 2)
+        var temp = arr.splice(n, 1)[0]
+        var left = [], right = []
+        arr.forEach((v, i) => {
+            if (v > temp) {
+                right.push(v)
+            }
+            else{
+                left.push(v)
+            }
+
+        })
+        return mysort2(left).concat(temp,mysort2(right))
+    }
+    var ary =[12,45,58,62,54,26,364,481,502,364]
+    console.log(mysort2(ary))
+    //arguments this 实参形参 剩余运算符
+    function fn(a,b){
+        a=a||0
+        b=b||0
+        return a+b
+    }
+    function fn2(a=0,b=0){
+        return a+b
+    }
+    fn(2)
+    console.log(fn2(6,1))
+</script>
