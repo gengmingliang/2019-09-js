@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <!-- 
         git 就是版本管理器 ：分布式的管理器  svn 集中式管理器
@@ -33,9 +35,11 @@
         git remote add  通道名  远程仓库地址 // 搭建本地仓库和远程仓库的链接
 
         git push 相当于写了 git push origin 把历史区内容通过origin推到远程
+
+        git push -- set-upstream origin master
      -->
 
-     <!-- 
+    <!-- 
         先在本地建一个文件夹 作为你的项目
         git init 把文件夹变成git仓库
         git add. 把工作区的所有文件提交到缓存区
@@ -49,7 +53,11 @@
         然后运行这个命令 会提示输入用户名和密码 完成之后 则可提交到远程仓库
         上述描述在整个项目中只出现一次 运行过之后 就不会出现
         以后正常使用 git push 即可
-        
+
+        克隆别人的项目 git clone + 别人的仓库地址
+        克隆的动作只需要做一次 再想同步别人远程操控的内容的时候
+        我们只需要运行 git pull
+
       -->
 </body>
 </html>
