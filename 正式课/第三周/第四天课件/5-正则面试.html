@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 怎么获取字符串中出现次数最多的字符？
+    var str = 'dsyaudhuhachiy7tsayuzxxzmxzkh8asduhxnzclkxzk'
+    // 第一种思路 使用循环：
+    // 把字符串中的每一项当做一个对象的属性名 出现一次就累加1
+    var obj = {}
+    for (i = 0; i < str.length; i++) {
+        if (obj.hasOwnProperty(str[i])) {
+            obj[str[i]] += 1
+        } else {
+            obj[str[i]] = 1
+        }
+    }
+    console.log(obj)
+    var a = ''
+    var max = 0
+    for (var k in obj) {
+        if(obj[k]>max){
+            max=obj[k]
+            a=k
+        }
+    }
+    console.log(a,max)
+
+    // 第二种思路使用排序加正则 /(\w+)\1/
+    var str2 =str.split('').sort((a,b)=>a.localeCompare(b)).join('')
+    console.log(str2)//一样的字符都在一起
+    var letter ='' ,max=0
+    str2.replace(/(\w)\1+/g,function(a,b){
+        console.log(a,b)//a是一串相同的字符 b是指的相同的这个字符
+        if(a.length>max){
+            max=a.length
+            letter=b
+        }
+    })
+    console.log(letter,max)
+
+    //千分符
+    var str ='485624879522'
+    str = str.replace(/\d{1,3}(?=(\d{3})+$)/g,function(a){
+        return a+','
+    })
+    console.log(str)
+
+    //使用replace 实现getparam
+    var str ='http://baidu.com/?a=23b_1=13&ccc=34'
+    function getParam(str){
+        var o ={}
+        // str.replace(/([^?=&]+)=([^?=&]+)/g,function(a,b,c){
+        //     console.log(a,b,c)
+        //     o[b]=c
+        // })
+        str.replace(/([^?=&]+)=([^?=&]+)/g,(a,b,c)=>o[b]=3)//简写方式
+         return o
+    }
+    var obj =getParam(str)
+    console.log(obj)
+
+    //元字符 修饰符
+    // test 手机号 邮箱 身份证
+    // exec 贪婪性 懒惰性 全局修饰符g lastindex
+    // execAll
+    // split()
+    // match 正则加不加g的区别
+    // replace 正则+字符串  正则+回调函数
+
+    // 字符串出现的次数
+    // 千分符
+    // getParam
+</script>

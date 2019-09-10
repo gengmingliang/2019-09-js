@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 元字符 特殊含义元字符  量词元字符 + ？ *{} 
+    // i m g
+    // test 匹配
+    //匹配一个有效年龄18-65岁 使用正则编写
+    // 直接用{18-65}解析出来的是1或者8到6或者5 这不是我们要的 所以选择分段处理
+    // 分三段 18-19  20-59  60-65
+    // var reg =/1{89}[2-5]\d6[0-5]/
+    var reg = /^(1[89]|[2-5]\d|6[0-5])$/
+
+    // exec 捕获 加上全局修饰符g的时候 每次匹配或者捕获的时候 都会修改正则的lastIndex属性
+    var str = '珠峰2019培训2020'
+    var reg2 = /\d+/g
+    // reg2.test(str)
+    // reg2.test(str)
+    // console.log(reg2.exec(str))
+    // console.log(reg2.exec(str))
+
+    // RegExp.prototype.execAll = function (str) {
+    //     //this就是对应的正则
+    //     if (this.global) {
+    //         throw new Error('缺少全局修饰符')
+    //     }
+    //     str = str.toString()
+    //     var res =this.exec(str)
+    //     var ary =[]
+    //     while(res){
+    //         ary.push(res)
+    //         res=this.exec(str)
+    //     }
+    //     return ary
+    // }
+    // console.log(reg2.execAll(str))
+
+    var str ='[object undefined]'
+    var reg =/ (\w+)/
+    var reg2 =/\[object (\w+)\]/
+    var reg3 =/[A-Z]\w+/
+    console.log(reg.exec(str))
+</script>
