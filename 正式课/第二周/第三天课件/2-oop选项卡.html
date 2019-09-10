@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #tab_box,
+        #tab_box2,
+        #tab_box3,
+        #tab_box4,
+        #tab_box5 {
+            width: 400px;
+            border: 1px dashed darkcyan;
+            margin: auto
+        }
+
+        ul {
+            display: flex;
+        }
+
+        .tab {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            border: 1px dashed darksalmon;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tab.current {
+            background: darkorange;
+            color: #fff;
+        }
+
+        .body {
+            width: 100%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 40px;
+            display: none
+        }
+
+        .body.current {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div id="tab_box">
+            <ul>
+                <li class='tab current'>1</li>
+                <li class='tab'>2</li>
+                <li class='tab'>3</li>
+            </ul>
+            <div class="body current">1</div>
+            <div class="body">2</div>
+            <div class="body">3</div>
+        </div>
+        <div id="tab_box2">
+            <ul>
+                <li class='tab current'>1</li>
+                <li class='tab'>2</li>
+                <li class='tab'>3</li>
+            </ul>
+            <div class="body current">1</div>
+            <div class="body">2</div>
+            <div class="body">3</div>
+        </div>
+        <div id="tab_box3">
+            <ul>
+                <li class='tab current'>1</li>
+                <li class='tab'>2</li>
+                <li class='tab'>3</li>
+            </ul>
+            <div class="body current">1</div>
+            <div class="body">2</div>
+            <div class="body">3</div>
+        </div>
+        <div id="tab_box4">
+            <ul>
+                <li class='tab current'>1</li>
+                <li class='tab'>2</li>
+                <li class='tab'>3</li>
+                <li class='tab'>4</li>
+            </ul>
+            <div class="body current">1</div>
+            <div class="body">2</div>
+            <div class="body">3</div>
+            <div class="body">4</div>
+        </div>
+    </body>
+</body>
+
+</html>
+<script>
+    /*
+        //获取对应元素
+        //循环绑定
+        //清除类名
+    */
+    function Tab(id) {
+        this.box = document.querySelector(id);
+        this.tabs = this.box.getElementsByClassName('tab');
+        this.bodys = this.box.getElementsByClassName('body');
+        this.mapBind();
+    }
+    Tab.prototype.mapBind = function () {
+        //循环this.tabs 给每一个tab绑定点击事件
+        var _this = this//用一个变量去存储当前实例的地址
+        for (let i = 0; i < this.tabs.length; i++) {
+            this.tabs[i].onclick = function () {
+                //写成普通函数时 里边的this是当前操作的元素
+                _this.clearclass()
+                _this.tabs[i].className = 'tab current'
+                _this.bodys[i].className = 'body current'
+            }
+        }
+    }
+    Tab.prototype.clearclass = function () {
+        //清除current类名 使用foreach必须得是数组才行
+        [...this.tabs].forEach((v, i) => {
+            v.className = 'tab'
+            this.bodys[i].className = 'body'
+        })
+    }
+    new Tab('#tab_box')
+    
+</script>

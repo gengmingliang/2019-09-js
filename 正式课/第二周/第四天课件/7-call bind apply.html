@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //call 改变函数执行时内部this的指向
+    //call 第一个参数是函数执行时改变this指向的 后边的参数都是传给前边函数的实参
+    function fn() {
+        console.log(arguments)
+        console.log(this)
+    }
+    var obj = {
+        f: fn
+    }
+    //[...arguments] array.from(arguments) [].slice.call(arguments)
+    obj.f(1, 1, 1)//1 1 1;obj
+    fn(2, 2, 2)//2 2 2 window
+    obj.f.call(Array, 3, 3, 3)//3 3 3 array
+    fn.call(obj, 4, 4, 4)//4 4 4 obj
+
+
+    //apply 用法类似于call 但是第二个参数是一个集合(数组或者类数组)
+    //函数执行时接受的还是散乱的函数
+    fn.apply(obj, [6, 6, 6])
+    Math.max.apply(Math, [5, 4, 7, 1, 2, 6, 8, 4, , 8, 7])
+    Math.max(...[3, 5, 4, 8, 7, 6, 2, 1, 9])
+
+    //myCall 使用方法类似于call
+    Function.prototype.myCall = function (context, ...ary) {
+        //让fn执行
+        //fn中的this得变成obj
+        // myCall执行时得把666传给fn
+        // this ===>fn
+        // this(...ary)
+        // 怎么保证一个函数执行上下文是context？
+        // context.qqq()qqq执行时里边的this就是context
+        var key =Symbol()
+        context[key] = this
+        context[key](...ary)
+        delete context.qqq
+    }
+    fn.myCall(obj, 6, 6, 6)
+
+    // bind的用法和call一样 只是不是让函数立即执行的 而是返回了一个新的函数
+    // 新函数执行时 里边的this会改变指定的对象
+    var fn2 =fn.bind(obj,6,6,6)
+    console.log(fn2)
+    fn2(9,9,9)//让fn执行了 并且把fn中的this改成了obj 还把666传给了fn
+
+    //封装一个 myBind
+    // Function.prototype.myBind =function(context,...ary){
+    //     var _this=this
+    //     return function(...arr){
+    //         return _this.call(context,...ary,...arr)
+    //     }
+    // }
+    Function.prototype.myBind=function(context,...ary){
+        return (...arr)=>this.call(context,...ary,...arr)
+    }
+    var fn3 =fn.myBind(obj,6,6,6)
+    fn3(3,3,3)
+
+    // 使用bind更改过后的函数 this的指向不会再去做任何更改了
+    var fn5 =fn.bind(obj,3,3)//fn5是通过修改fn中的this之后得到的函数
+    var fn6 =fn5.bind(Array,6,6)//fn6是通过修改fn5中的this之后得到的函数
+    fn5()//obj
+    fn6()//obj
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        面向对象 JS c++ java
+        类    实例
+        动物  狗
+        面向过程 c
+
+        基于面向对象开发的几种模式
+        1、单例模式 以后工作会使用单例封装一些工具库
+        var per = {
+            name:'小明',
+            age:10,
+            sex:'男'
+        }//缺点是可以随意更改公共对象
+
+        2、高级单例模式
+        function person(){
+            var name ='小红'
+            var age =10
+            var sex =1
+            var fn =function(){
+                console.log(name)
+            }
+            return{
+                name,age,sex
+            }
+        }
+        var per2 =person()
+        per.name='666'//只是改了per2这个对象的name的属性值，内部的name变量是不会被修改的
+        console.log(per2.name)//666
+        per2.fn()
+
+        高级单例模式可以应用到模块化开发
+
+        
+    */
+</script>
