@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+    [].forEach(function (item, index) {
+
+    })
+    // pending等待状态  resolve成功 reject失败
+    // 一经改变状态就不在发生任何改变
+    let p = new Promise(function (resolve, reject) {
+        // // executor 函数
+        // console.log(resolve,reject)
+        // resolve(234)//同步把状态改成了resolved
+        // // console.log(qqq)
+        // reject(666)
+        // console.log(999)
+        //     setTimeout(()=>{
+        //         console.log(qqq)
+        //     },10)
+        // })
+        $.ajax({
+            url: './data.json',
+            success: resolve,
+            // error: function(){
+            //     throw new error
+            //     resolve()
+            // }
+            error:reject
+        })
+    })
+    p.then(function (data) {
+        //resolve
+        console.log(data)
+    }, function (err) {
+        // reject
+        console.log(err)
+    }).catch((err)=>{
+        console.log('catch',err)
+    }).finally(()=>{
+
+    })
+
+    // Promise.all([p1,p2,p3]).then((data)=>{},()=>{})
+    // Promise.race([p1,p2,p3]).then((data)=>{},()=>{})
+    // Promise.reject('执行失败').then(()=>{},()=>{}) 手动创造一个失败态
+    // Promise.resolve('执行成功').then(()=>{}) 手动创造一个成功态
+</script>
