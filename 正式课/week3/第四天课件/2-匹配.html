@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3 {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" id="inp">
+    <h3>手机号不合法</h3>
+</body>
+
+</html>
+<script>
+    //验证一个手机号 反馈错误弹框
+    var reg = /^1[3456789]\d{9}$/
+    var inp = document.querySelector('#inp')
+    var h3 = document.querySelector('h3')
+    inp.oninput = function () {
+        console.log(this.value)
+        var str = this.value
+        if (str.length == 11) {
+            if (reg.test(str)) {
+                h3.style.display = 'block'
+            } else {
+                h3.style.display = 'none'
+            }
+        } else if (str.length > 11) {
+            h3.style.display = 'block'
+        }
+    }
+
+    //QQ号匹配  QQ邮箱匹配
+    // 5-10位 开头不能是0
+    var reg = /^[1-9]\d{5,10}$/
+    var reg = /^[1-9]\d{5,10}@qq\.com$/
+
+    //获取一个QQ邮箱的QQ号
+    var reg = /(\d+)(?=@qq.com)/
+
+    //身份证号的匹配
+    var reg = /^[1-9]\d{5}\d{4}\d{2}\d{2}\d{3}(\d|x)$/
+
+    var str = '这个人的身份证号是130981199710075611'
+    var str2 = str.replace(/.+\d{6}(\d{4})(\d{2})(\d{2})\d{2}(\d)(\d}x)/, function (...arg) {
+        return `这个人的出生年月日是${arg[1]}年${arg[2]}月${arg[3]}日性别是${arg[4] % 2 ? '男' : '女'}`
+    })
+    console.log(str2)
+
+    //有效数
+    // 前边可能会出现 -+
+    // 整数部分 多位数时 首位不能是0
+    // 小数部分可有可无
+    var reg = /^[-+]?([1-9]\d+|\d)(\.\d+)?$///([1-9]\d+|\d) 两位数及以上的时候 首位不能是0 单位数时不限制
+</script>

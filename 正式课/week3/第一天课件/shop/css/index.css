@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0
+}
+.box{
+    margin: auto;
+    width: 1200px;
+}
+.box header{
+    border: 1px solid #cccccc;
+    height: 50px;
+    overflow: hidden;
+    padding-left: 40px
+}
+.box header div{
+    float: left;
+    margin:auto 10px;
+    color: #333333;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    cursor: pointer
+}
+.box header div:hover{
+    color: skyblue
+}
+main{
+    overflow: hidden;
+    margin-top: 25px
+}
+main .good_box{
+    float: left;
+    width: 220px;
+    height: 360px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    margin-right: 15px;
+    margin-bottom: 25px;
+    position: relative;
+}
+main .good_box:nth-child(5n){
+    margin-right: 0;
+}
+main .good_box:hover{
+    border-color: pink;
+}
+main .good_box .img_box{
+    height: 180px;
+    width: 180px;
+    margin: 20px auto
+}
+main .good_box .img_box img{
+    width: 100%
+}
+main .good_box .desc{
+    text-align: center;
+}
+main .good_box .price{
+    text-align: center;
+    color: red;
+    margin-top: 30px
+}
+main .good_box .bot_box{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%
+}
+main .good_box .bot_box div{
+    flex: 1;
+    text-align: center;
+    line-height: 40px;
+    border-top: 1px solid #cccccc
+}
+main .good_box .bot_box div:nth-child(1){
+    border-right: 1px solid #cccccc
+}

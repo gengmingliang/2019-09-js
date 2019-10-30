@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*
+        面向对象的几种常见的设计样式  单例模式 高级单例模式 工厂模式 构造函数模式 原型模式
+        单例模式就是一个普通的对象：命名空间
+        高级单例模式就是一个闭包 返回一个普通对象
+        使用单例模式 我们可以实现模块化开发
+        工厂模式 本质上是一个函数 批量生产单例模式
+        构造函数模式 
+    */
+
+    function factory(name, age) {
+        var obj = {
+            name,
+            age,
+            eat() { },
+            play() { }
+        }
+        return obj
+    }
+    function person(name, age) {
+        this.name = name
+        this.age = age
+        this.eat = function () {
+
+        }
+        this.play = function () {
+
+        }
+    }
+    var a = person('张三', 11)
+    var b = factory('李四', 22)
+    var c = new person('小明', 55)
+    console.log(a, b, c)
+    //普通函数执行：开辟作用域 形参赋值 变量提升 代码执行 return什么 函数运行结果就是什么
+    //new函数执行：开辟作用域 形参赋值 变量提升 开辟一个新的堆内存 把函数中的this指向改成这堆内存 代码执行 代码执行完成之后 默认返回this
+
+    // 数组类   某一个数组
+    // 字符串类   某一个字符串
+
+    // 创造一个数组 我们有两种方式 一个是字面量 另一个是构造函数创造
+    var ary = []//字面量
+    var arr = new Array(10)//构造函数
+
+    // 原型模式 就是在构造函数的基础上添加一个prototype的概念
+    /*
+        每一个实例 都有一个__proto__的属性 指向所属类的原型
+        每一个函数 都有一个prototype的属性 指向自己的原型
+        每一个类的原型上都有一个constructor属性 指向所有类(函数)本身
+    */
+    //    原型链：属性的查找机制 根据_proto_一级一级的向上查找
+    function person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    person.prototype.eat = function () {
+
+    }
+    person.prototype.play = function () {
+
+    };
+    //hasownproperty  查看私有属性
+    [].hasOwnProperty('length');
+    [].hasOwnProperty('pop');//flase
+    Array.hasOwnProperty('pop');//false
+    Array.prototype.hasOwnProperty('pop')//true
+    Array.hasOwnProperty('call');//flase
+    Array.__proto__.hasOwnProperty('call');
+
+    [] instanceof Number //[]到基类原型这条链上 有没有number的身影 有就是true
+    //所有的引用数据类型 instanceof object都是true
+    //所有的值类型 instan of 任意 ===> 结果都是false
+
+    // call  apply bind
+    //手写一个 mycall 跟call的用法一样
+    // call让函数执行 改变了this的指向 把第二个及以后的参数都传给了函数
+    Function.prototype.myCall = function (context, ...arg) {
+        // this(...arg)第一个第三条都满足了 但是this没改
+        var key = Symbol()
+        context[key] = this
+        var res = context[key](...arg)
+        delete context[key]
+        return res
+    }
+    Function.prototype.myApply = function (context, arg) {
+        var key = Symbol()
+        context[key] = this
+        var res = context[key](...arg)
+        delete context[key]
+        return res
+    }
+    Function.prototype.myBind=function(context,...arg){
+        var _this=this
+        return function(...arr){
+           return _this.call(context,...arg,...arr)
+        
+        }
+    }
+    var obj = {
+        a: 12,
+        b: 13
+    }
+    var f = function () {
+        console.log(arguments)
+        console.log(this)
+        return 123
+    }
+    console.log(f.call(obj, 2, 3, 4))
+    f.myCall(obj, 2, 3, 4)
+    var f2 =f.myBind(obj,2,3,4)
+    console.log(f2())
+    f2.call([])//this被bind改过之后 就不会再发生第二次的修改了
+</script>
