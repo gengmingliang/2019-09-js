@@ -17,17 +17,18 @@ html > section,
 body > section {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
 }
 html section.loadingBox,
 body section.loadingBox {
-  background: #333333;
+  background: #333;
   transition: opacity 1s;
   z-index: 30;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
 }
 html section.loadingBox h1,
 body section.loadingBox h1 {
@@ -48,7 +49,7 @@ body section.loadingBox .progressBox {
   border-radius: 0.4rem;
   overflow: hidden;
   margin: auto;
-  background: #ffffff;
+  background: #fff;
   position: relative;
   top: 45%;
 }
@@ -69,7 +70,7 @@ body section.phoneBox {
 }
 html section.phoneBox header,
 body section.phoneBox header {
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   position: relative;
   top: 0.5rem;
@@ -80,14 +81,14 @@ body section.phoneBox header h1 {
 }
 html section.phoneBox header h2,
 body section.phoneBox header h2 {
-  font-size: 0.3rem;
+  font-size: 0.27rem;
 }
 html section.phoneBox footer,
 body section.phoneBox footer {
   width: 90vw;
   height: 63vw;
   left: 5vw;
-  background: url('../images/phone-listen.png') no-repeat;
+  background: url('../images/phone-listen.png');
   background-size: contain;
   position: absolute;
   bottom: 0.5rem;
@@ -129,17 +130,18 @@ body section.phoneBox .bot {
 }
 @keyframes move {
   0% {
-    transform: scale(1.4);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.4);
   }
 }
 html section.chatBox,
 body section.chatBox {
   width: 100%;
   height: 100%;
-  background: skyblue;
+  overflow: hidden;
+  background: #db5c5c;
   z-index: 10;
 }
 html section.chatBox .chatMsgBox,
@@ -150,7 +152,7 @@ body section.chatBox .chatMsgBox {
 html section.chatBox .chatMsgBox li,
 body section.chatBox .chatMsgBox li {
   overflow: hidden;
-  margin-bottom: 3vw;
+  margin-bottom: 5vw;
   transition: all 0.5s;
 }
 html section.chatBox .chatMsgBox li > div,
@@ -168,16 +170,17 @@ html section.chatBox .chatMsgBox li .imgBox img,
 body section.chatBox .chatMsgBox li .imgBox img {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 html section.chatBox .chatMsgBox li .msg,
 body section.chatBox .chatMsgBox li .msg {
-  max-width: 70vw;
-  margin-left: 4vw;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  box-sizing: border-box;
-  border-radius: 5px;
+  max-width: 60vw;
   padding: 3.5vw;
+  margin-left: 4vw;
+  background: #fff;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  border-radius: 7px;
   word-break: break-all;
 }
 html section.chatBox .chatMsgBox li .msg::before,
@@ -186,10 +189,11 @@ body section.chatBox .chatMsgBox li .msg::before {
   display: block;
   width: 3vw;
   height: 3vw;
-  border: 1px solid #eeeeee;
-  border-color: transparent transparent #eeeeee #eeeeee;
-  background: #ffffff;
-  transform: rotate(45deg) translateX(-3vw) translateY(4vw);
+  border: 1px solid #eee;
+  border-top: none;
+  border-right: none;
+  background: #fff;
+  transform: translateX(-5vw) translateY(1vw) rotate(45deg);
   position: absolute;
 }
 html section.chatBox .chatMsgBox li.right,
@@ -205,12 +209,13 @@ body section.chatBox .chatMsgBox li.right .msg {
   margin-left: 0;
   margin-right: 4vw;
   position: relative;
-  background: #77c570;
-  border-color: #6faa6d;
+  background: #76f56b;
+  border-color: #83dd80;
 }
 html section.chatBox .chatMsgBox li.right .msg::before,
 body section.chatBox .chatMsgBox li.right .msg::before {
-  background: #77c570;
+  background: #76f56b;
+  border: 1px solid #83dd80;
   border-bottom: none;
   border-left: none;
   transform: translateY(1vw) rotate(45deg);
@@ -218,7 +223,7 @@ body section.chatBox .chatMsgBox li.right .msg::before {
 }
 html section.chatBox .chatMsgBox li.opa,
 body section.chatBox .chatMsgBox li.opa {
-  transform: translateY(0.5rem);
+  transform: translateY(1rem);
   opacity: 0;
 }
 html section.chatBox .keyboard,
@@ -251,5 +256,5 @@ body section.chatBox .keyboard p {
 }
 html section.chatBox .bot,
 body section.chatBox .bot {
-  transform: translateY(4.5rem);
+  transform: translateY(4.4rem);
 }

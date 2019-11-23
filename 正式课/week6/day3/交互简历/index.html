@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +8,28 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <script>
-    let w = document.documentElement.clientWidth || document.body.clientWidth;
-    document.documentElement.style.fontSize = w * 100 / 750 + 'px';
-    window.onresize = function () {
-        let w = document.documentElement.clientWidth || document.body.clientWidth;
-        document.documentElement.style.fontSize = w * 100 / 750 + 'px';
+    let w = document.documentElement.clientWidth||document.body.clientWidth;
+    document.documentElement.style.fontSize = w*100/750+'px';
+    window.onresize = function(){
+        let w = document.documentElement.clientWidth||document.body.clientWidth;
+        document.documentElement.style.fontSize = w*100/750+'px';
     }
 </script>
-
 <body>
-    <section class="loadingBox">
-        <h1>怎么硕呢</h1>
-        <h2>小啊giao的传奇故事</h2>
+    <section class='loadingBox '>
+        <h1>珠峰培训</h1>
+        <h2>H5场景的交互简历</h2>
         <div class="progressBox">
             <div class="progress"></div>
         </div>
-        <div id="btn" class="hide">进入H5</div>
+        <div id="btn" class='hide'>进入H5</div>
+        
     </section>
-    <section class="phoneBox">
+    <section class="phoneBox ">
         <header>
-            <h1>啊giao来电</h1>
-            <h2>www.狗的伊马斯.com</h2>
-            <h3 class="hide">00:00</h3>
+            <h1>珠峰培训</h1>
+            <h2>www.zhufengpeixun.com</h2>
+            <h3 class='hide'>00:00</h3>
         </header>
         <footer>
             <div class="circle"></div>
@@ -38,15 +37,16 @@
         <div class="overBox bot">
             <div class="overBtn"></div>
         </div>
+        
     </section>
     <section class="chatBox">
         <ul class="chatMsgBox">
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    您好，我叫giao哥，来自于河南，喜欢吃猪头肉！
+                    面试官您好，我叫XXX，来自于北京，2018年毕业于XXX院校，学习的是XXX专业，到目前位置工作3年
                 </div>
             </li>
             <li class='right opa'>
@@ -54,15 +54,19 @@
                     <img src="./images/message-head2.png" alt="">
                 </div>
                 <div class="msg">
-                    哇塞！好牛X啊！赶紧坐下吃两块吧！
+                    
+                    哇塞！好牛X啊！介绍一下自己的专业技能吧！
+                
                 </div>
             </li>
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    不着急，我先来个坛子🐔
+                    
+                    本人擅长：原生JS、ES6、Promise等设计模式、组件和插件封装，看过JQ源码，可以开发各种Hybrid混合APP...
+                
                 </div>
             </li>
             <li class='right opa'>
@@ -70,15 +74,15 @@
                     <img src="./images/message-head2.png" alt="">
                 </div>
                 <div class="msg">
-                    烤山药吃吗？
+                    我们现在使用的是VUE和REACT
                 </div>
             </li>
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    吃！吃大块的！
+                    之前的公司使用的是REACT开发，个人对于REACT渲染原理、MVC模式、SPA单页面应用、DIFF差异渲染机制以及REDUX原理等都有研究，掌握的很熟练，对于VUE之前也做过，如果公司需要可以快速入手
                 </div>
             </li>
             <li class='right opa'>
@@ -86,25 +90,25 @@
                     <img src="./images/message-head2.png" alt="">
                 </div>
                 <div class="msg">
-
-                    两块够吗？
-
+                    
+                        webpack会吗？
+                
                 </div>
             </li>
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    不够！还得再来一个坛子🐔！
+                    之前项目都是基于脚手架完成的，自己偶尔去修改一些webpack配置项，不过目前正在深入研究，可以搭建简单的脚手架
                 </div>
             </li>
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    吃多了鸡儿疼吗？
+                    同时对于NODE/EXPRESS等后台开发也有所涉猎，只是没有应用到项目实战中，目前也正在研究，对这个比较感兴趣
                 </div>
             </li>
             <li class='right opa'>
@@ -112,15 +116,15 @@
                     <img src="./images/message-head2.png" alt="">
                 </div>
                 <div class="msg">
-                    没事！
+                    你认为你的优点在于哪？和其他人对比，公司为啥要录用你！
                 </div>
             </li>
-            <li class="opa">
+            <li class='opa'>
                 <div class="imgBox">
                     <img src="./images/message-head1.png" alt="">
                 </div>
                 <div class="msg">
-                    牛比死懒
+                    肯吃苦、肯加班、能力高、要钱少...这些够吗?
                 </div>
             </li>
             <li class='right opa'>
@@ -128,7 +132,7 @@
                     <img src="./images/message-head2.png" alt="">
                 </div>
                 <div class="msg">
-                    呀吼！giao
+                    来吧！我们需要你！
                 </div>
             </li>
         </ul>
@@ -138,19 +142,18 @@
         </div>
     </section>
     <!-- 
-        preload: none 不预加载
-                 auto 预加载
-                 metadata 预加载源数据(大小 总时间)
-        loop 循环播放
-
-        bell.play()播放音频
-        bell.pause()暂停播放
+        preload:  none 不预加载
+                  auto  预加载
+                  metadata  预加载元数据（大小，总时间）
+        autoplay  自动播放 
+        loop  循环播放
+        
+        bell.play() 播放音频
+        bell.pause() 暂停音频
      -->
-    <audio src="./audio/giao.mp3" preload="metadata" loop id="bell"></audio>
-    <audio src="./audio/say.mp3" preload="metadata" id="say"></audio>
-    <audio src="./audio/music.mp3" preload="metadata" id="bgm"></audio>
-
+    <audio src="./audio/bell.mp3" controls preload="none" loop='true' id='bell'></audio>
+    <audio src="./audio/say.mp3"  preload="metadata" id='say'></audio>
+    <audio src="./audio/music.mp3"  preload="metadata" loop='true' id='bgm'></audio>
 </body>
-
 </html>
 <script src="./js/index.js"></script>

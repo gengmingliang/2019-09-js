@@ -1,128 +1,123 @@
-let {getCss,setCss,winH,offset} = utils;
-let flag = false;// 数据已请求完成； true代表正在请求
-var oLis = document.querySelectorAll('.box>li')
-function init() {
-    [...oLis].forEach(item=>item.innerHTML = '')
-}
-init();
-// 第一步 获取数据， 
+let oLis = document.querySelectorAll('.body li');
+let box = document.getElementsByClassName('body')[0];
+let oImgs = box.getElementsByTagName('img');
+let flag = false;// 代表新数据渲染完成；什么时候 flag应该是个true;新数据一请求， 就把flag置为
+let n = 0;// 记录加载新数据的次数；
+// let oLis2 = box.getElementsByTagName('li');
+// box.innerHTML += '<li>666</li>';
+// console.log(oLis,oLis2)
+
 function getData(){
+    // 获取后台数据
     flag = true;
-    // 获取数据的方法，
-    var xhr = new XMLHttpRequest();// 创造实例
+    n++;
+    let xhr = new XMLHttpRequest();
     xhr.open('get','./data.json',true);
-    xhr.onreadystatechange = function () {
-        if(xhr.readyState==4 && /200|304/.test(xhr.status)){
-            // 代表请求成功
-            flag = false;
-            // console.log(xhr.response)
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && /200|304/.test(xhr.status)){
+            // 请求成功；
+            // console.log(xhr.response);
             let data = JSON.parse(xhr.response);
-            // JSON.stringify()
-            // console.log(data);
-            renderHtml(data);// 把后台给的数据渲染了
-            loadAll();// 保证首屏图片加载出来
+            render(data);//获取成功之后， 渲染数据
+            flag = false; // 代表新数据渲染完成之后的操作
+            loadAll();
         }
     }
     xhr.send();
 }
 getData();
 
-
-// 第二步  渲染数据// render函数什么时候执行？？
-function renderHtml(ary){
-    // ary存储的时每一条数据，难么这些数据应该渲染到哪里； 
-    // 渲染到写好的那五列中；
+// 渲染数据 
+function render(ary){
+    let str = '';
     ary.forEach((item,index)=>{
-        // item 代表了每一条要去显示的数据
-        // console.log(item);
-        let {pic,author,desc,height} = item;
-        let str = `
-                <div class="img">
-                    <img style='height:${height}px' src="./img/default.jpg" realSrc='${pic}' alt="">
-                </div>
-                <p class="desc">${desc}</p>
-                <div class="author">${author}</div>
-            `;
-        // 字符串拼接好了之后 怎么向结构里边添加
-        // 1、 挨个添加 
-        // let n = index % 5;// 0 1 2 3 4
-        // oLis[n].innerHTML += str;  
-        
-        // 2、每一次都向那个最矮的li添加
-        let temp = getMinLi();
-        // temp.innerHTML += str; 
+        let {desc,pic,height,author} = item;
+        // str = `<div class="img_box">
+        //     <img realSrc="${pic}" src='./img/1.jpg' alt="" style='height:${height}px'>
+        //     <p class="desc">${desc}</p>
+        //     <p class="author">${author}</p>
+        // </div>`
+        // // 挨个列的排放
+        // // oLis[index%5].innerHTML += str;
+        // let temp = getMinLi();// 找出了最低的li
+        // //把要增加的这一项 放到最低的哪个li中；
+        // temp.innerHTML += str;
+        str = `
+            <img realSrc="${pic}" src='./img/1.jpg' alt="" style='height:${height}px'>
+            <p class="desc">${desc}</p>
+            <p class="author">${author}</p>
+            `
+        let temp = getMinLi();// 找出了最低的li
         let div = document.createElement('div');
-        div.className = 'pic_box'
+        div.className = 'img_box';
         div.innerHTML = str;
-        temp.appendChild(div);
+        temp.appendChild(div)
     })
 }
 
-// 挑选最矮的li
-function getMinLi() {
-    // 怎么从五个li中挑选出最低的  clientHeight
-    var ary = [...oLis].sort((a,b)=>{
-        return a.clientHeight - b.clientHeight
+// 找最低的 li
+function getMinLi(){
+    // 能找出最短的哪个li
+    let ary = [...oLis].sort((a,b)=>{
+        return a.clientHeight - b.clientHeight;
     })
-    // console.log(ary);
-    return ary[0]
+    return ary[0];
 }
 
-// 第三步  滚动 加载新数据；
-function loadMore() {
-    if(flag)return; // flag 为true代表数据正在加载，这时我们不应该再去加载新数据
-    // 1、什么时候加载新数据？ 当最短的那个li露出底部的时候
-    // 2、怎么加载新数据？
-    let scrT = document.documentElement.scrollTop;// 卷去的高度
-    let wH = winH();// 一屏幕的高度
-    let temp = getMinLi();// 获取最低的那个LI
-    let tarT = offset(temp).t + temp.clientHeight;// 元素到body的距离+元素本身的高度  就是元素底边到body的距离
-    if(tarT < scrT+wH){
-        // 底部露出之后  加载新数据
-        getData();
-        console.log(11111)
-    }
-}
-
-window.onscroll = function () {
+// 滚动加载更多；
+window.onscroll = function(){
+    // if(n>=3)return;
     loadMore();
-    loadAll(); // 欢动屏幕的时候执行 loadAll
+    loadAll();
+}
+
+function loadMore(){
+    // 最短的哪个li露出底部的时候 去加载新数据
+    let li = getMinLi();
+    if(utils.offset(li).t+li.clientHeight <= document.documentElement.scrollTop+utils.winH().h){
+        // 需要等新数据渲染到页面之后 再去加载新数据；
+        if(!flag){
+            console.log(666)
+            getData();
+        }
+        
+    }
 }
 
 function loadImg(ele){
-    if(ele.loaded)return;
-    let scrT = document.documentElement.scrollTop;
-    let wH = winH();
-    let tarT = offset(ele).t;
-    if(tarT < scrT+wH){
-        // 图片加载
+    if(ele.myLoad)return;
+    // 图片懒加载
+    if(utils.offset(ele).t+ele.clientHeight/2 <= document.documentElement.scrollTop + utils.winH().h){
+        //图片露出了一半；
         let realSrc = ele.getAttribute('realSrc');
+        // ele.src = realSrc;
         let temp = new Image();
-        temp.src = realSrc;
+        temp.src = realSrc;// 让临时图片去请求真实的图片地址去了；
         temp.onload = function(){
+            // 图片已经从远程拿到了本地；
             ele.src = realSrc;
-            temp = null;
-            ele.loaded = true;
+            ele.myLoad = true;// 加载过之后的图片就不需要再去加载了；
             fadeIn(ele);
         }
+        temp = null;
+
     }
 }
-function loadAll() {
-    // 获取所有的img; 然后挨个执行 loadImg()
-    let imgs = document.querySelectorAll('.box img');
-    [...imgs].forEach(item=>loadImg(item))
+function loadAll(){
+    [...oImgs].forEach(item=>{
+        loadImg(item);
+    })
 }
 
 function fadeIn(ele){
     ele.style.opacity = 0;
-    let a = 0;
+    let n = 0;
     ele.timer = setInterval(()=>{
-        a+=0.1;
-        if(a>=1){
-            a = 1;
+        n += 0.05;
+        if(n >= 1){
+            n = 1;
             clearInterval(ele.timer)
         }
-        ele.style.opacity = a;
-    },20)
+        ele.style.opacity = n;
+    },10)
 }
-

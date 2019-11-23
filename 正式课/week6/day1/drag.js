@@ -20,11 +20,12 @@ class Drag{
     move(e){
         let l = this.startX + e.pageX - this.startPx,
             t = this.startY + e.pageY - this.startPy;// l t 是盒子当前的位置
-            let ary = this.option.range;
+            console.log(this.startY,t)
+        let ary = this.option.range;
         if(ary){
-            l = l <= ary[0] ? ary[0] :(l >= ary[2] ? ary[2] : l)
-            t = t <= ary[1] ? ary[1] :(t >= ary[3] ? ary[3] : t)
-        }
+            l = l <=  ary[0] ? ary[0] : (l >= ary[2] ? ary[2] : l) 
+            t = t <=  ary[1] ? ary[1] : (t >= ary[3] ? ary[3] : t) 
+        }    
         this.box.style.left = l + 'px';
         this.box.style.top = t + 'px';    
     }

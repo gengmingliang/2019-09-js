@@ -30,15 +30,16 @@ function ajax(url, options) {
         }
         xhr.send(JSON.stringify(data));
     })
+
 }
-ajax.get = function(url,data){
-    return http(url,{
+ajax.get = function (url,data) {
+    return ajax(url,{
         method:'get',
         data
     })
 }
-ajax.post = function(url,data){
-    return http(url,{
+ajax.post = function (url,data) {
+    return ajax(url,{
         method:'post',
         data
     })
